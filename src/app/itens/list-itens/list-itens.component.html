@@ -1,49 +1,45 @@
 <mat-table [dataSource]="itens" class="mat-elevation-z8">
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef  class="mat-column-100"> Código </mat-header-cell>
-      <mat-cell *matCellDef="let item"  class="mat-column-100"> {{item.id}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="nome">
-      <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{item.nomeProduto}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="unidadeProduto">
-      <mat-header-cell *matHeaderCellDef> Unidade </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{item.unidadeProduto}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="quantidade">
-      <mat-header-cell *matHeaderCellDef> Quantidade </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{item.quantidade}} {{item.unidadeProduto}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="preco">
-      <mat-header-cell *matHeaderCellDef> Preco </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{item.preco | currency :'BRL':true:'1.0-0'}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="perecivel">
-      <mat-header-cell *matHeaderCellDef> Perecivel </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{item.perecivel}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="fabricacao">
-      <mat-header-cell *matHeaderCellDef> Fabricacao </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{item.fabricacao | date:"dd/MM/yyyy"}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="validade">
-      <mat-header-cell *matHeaderCellDef> Validade </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{item.validade | date:"dd/MM/yyyy"}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="action">
-      <mat-header-cell *matHeaderCellDef class="mat-column-100"></mat-header-cell>
-      <mat-cell *matCellDef="let item" class="mat-column-100">
-        <!-- <button mat-icon-button color="primary" [routerLink]="['/produto', item.id]">
-          <i class="fas fa-edit"></i>e
-        </button> -->
-        <button mat-button (click)="openDialog(item.id)">Editar</button>
-        <button mat-icon-button color="warn" (click)="deletar(item.id)">
-          <i class="fas fa-trash"></i>X
-        </button>
-      </mat-cell>
-    </ng-container>
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef class="mat-column-100"> Código </mat-header-cell>
+    <mat-cell *matCellDef="let item" class="mat-column-100"> {{item.id}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="nome">
+    <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+    <mat-cell *matCellDef="let item"> {{item.nomeItem}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="unidade">
+    <mat-header-cell *matHeaderCellDef> Unidade </mat-header-cell>
+    <mat-cell *matCellDef="let item"> {{item.unidade}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="quantidade">
+    <mat-header-cell *matHeaderCellDef> Quantidade </mat-header-cell>
+    <mat-cell *matCellDef="let item"> {{item.quantidade}} {{item.unidade}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="preco">
+    <mat-header-cell *matHeaderCellDef> Preco </mat-header-cell>
+    <mat-cell *matCellDef="let item"> {{item.preco | currency :'BRL':true:'1.0-0'}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="perecivel">
+    <mat-header-cell *matHeaderCellDef> Perecivel </mat-header-cell>
+    <mat-cell *matCellDef="let item"> {{item.perecivel}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="fabricacao">
+    <mat-header-cell *matHeaderCellDef> Fabricacao </mat-header-cell>
+    <mat-cell *matCellDef="let item"> {{item.fabricacao | date:"dd/MM/yyyy"}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="validade">
+    <mat-header-cell *matHeaderCellDef> Validade </mat-header-cell>
+    <mat-cell *matCellDef="let item"> {{item.validade | date:"dd/MM/yyyy"}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="action">
+    <mat-header-cell *matHeaderCellDef class="mat-column-100"></mat-header-cell>
+    <mat-cell *matCellDef="let item" class="mat-column-100">
+      <button mat-button (click)="openModalItem(item.id)"><i class="fas fa-edit"></i></button>
+      <button mat-icon-button color="warn" (click)="deletar(item.id)">
+        <i class="fas fa-trash"></i>
+      </button>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

@@ -5,16 +5,15 @@ export class ItemService {
   itens = [];
   constructor() { }
 
-  save(formularioProduto: FormGroup) {
-
-    formularioProduto.get('id').setValue(uuid.v4());    
+  save(formularioItem: FormGroup) {
+    formularioItem.get('id').setValue(uuid.v4());    
     if (JSON.parse(localStorage.getItem("item")) == null) {
       this.itens = []
     }
     else {
       this.itens = JSON.parse(localStorage.getItem("item"));
     }
-    this.itens.push(formularioProduto.value);
+    this.itens.push(formularioItem.value);
     window.localStorage.setItem('item', JSON.stringify(this.itens));
   }
 
@@ -28,6 +27,4 @@ export class ItemService {
       this.itens = JSON.parse(localStorage.getItem("item"));
     });
   }
-
-
 }

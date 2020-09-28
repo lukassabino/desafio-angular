@@ -24,12 +24,12 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material/core';
-import { DialogContentExample } from './itens/modal-itens/modal-itens.component';
+import { ModalItens } from './itens/modal-itens/modal-itens.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
  
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 registerLocaleData(localePt);
@@ -42,7 +42,7 @@ registerLocaleData(localePt);
     ContainerComponent,
     HeaderComponent,
     NavComponent,
-    DialogContentExample
+    ModalItens
   ],
   imports: [
     BrowserModule,

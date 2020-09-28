@@ -1,107 +1,54 @@
 <h4>Edicao de Item</h4>
-
-<form [formGroup]="formularioProduto" >
+<form [formGroup]="formularioItem">
   <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--8-col">
-      <mat-form-field  class="teste">
-        <input matInput placeholder="Nome" formControlName="nomeProduto">
-        <mat-error *ngIf="formularioProduto.get('nomeProduto').hasError('required')">
+      <mat-form-field class="teste">
+        <input matInput placeholder="Nome" formControlName="nomeItem">
+        <mat-error *ngIf="formularioItem.get('nomeItem').hasError('required')">
           Nome é obrigatório
         </mat-error>
       </mat-form-field>
-
-      <mat-form-field  class="teste">
+      <mat-form-field class="teste">
         <input matInput placeholder="Preco" formControlName="preco">
-        <mat-error *ngIf="formularioProduto.get('preco').hasError('required')">
+        <mat-error *ngIf="formularioItem.get('preco').hasError('required')">
           Preco é obrigatório
         </mat-error>
       </mat-form-field>
     </div>
-
-
-    <!-- <div class="mdl-cell mdl-cell--4-col"> -->
-      <!-- <mat-form-field  class="teste"> -->
-        <!-- <input type="file" #imageInput (change)="inputFileChange(imageInput)" > -->
-        <!-- <input matInput placeholder="Imagem do Produto" formControlName="imagemProduto"> -->
-        <!-- <mat-error *ngIf="formularioProduto.get('imagemProduto').hasError('required')">
-          A imagem do produto é obrigatório
-        </mat-error> -->
-      <!-- </mat-form-field> -->
-      <!-- <img id="imagemTeste" src="{{produtos.imagemProduto}}"> -->
-    <!-- </div> -->
-
-
     <div class="mdl-cell mdl-cell--2-col">
-      <!-- <mat-form-field class="teste">
-        <input matInput placeholder="Unidade" formControlName="unidadeProduto">
-        <mat-error *ngIf="formularioProduto.get('unidadeProduto').hasError('required')">
-          Unidade é obrigatório
-        </mat-error>
-      </mat-form-field> -->
-
-      
       <mat-form-field appearance="fill" class="teste">
         <mat-label>Unidade</mat-label>
-        <mat-select formControlName="unidadeProduto">
+        <mat-select formControlName="unidade">
           <mat-option *ngFor="let unidade of unidades" [value]="unidade.value">
             {{unidade.value}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-
-      <mat-form-field  class="teste">
+      <mat-form-field class="teste">
         <input matInput placeholder="Quantidade" formControlName="quantidade">
       </mat-form-field>
     </div>
-
-    <!-- <div class="mdl-cell mdl-cell--2-col">
-      <mat-form-field  class="teste">
-        <input matInput placeholder="Quantidade" formControlName="quantidade">
+    <div class="mdl-cell mdl-cell--2-col">
+      <mat-form-field appearance="fill" class="teste">
+        <mat-label>Data de Fabricacao</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="fabricacao">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
-    </div> -->
-
-    <!-- <div class="mdl-cell mdl-cell--2-col">
-        <mat-form-field  class="teste">
-          <input matInput placeholder="Preco" formControlName="preco">
-          <mat-error *ngIf="formularioProduto.get('preco').hasError('required')">
-            Preco é obrigatório
-          </mat-error>
-        </mat-form-field>
-      </div> -->
-
-
-
-      <div class="mdl-cell mdl-cell--2-col">
-        <mat-form-field appearance="fill" class="teste">
-          <mat-label>Data de Fabricacao</mat-label>
-          <input matInput [matDatepicker]="picker2" formControlName="fabricacao">
-          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-          <mat-datepicker #picker2></mat-datepicker>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill" class="teste">
-          <mat-label>Data de Validade</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="validade">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-      </div>
-
-      <div class="mdl-cell mdl-cell--2-col">
-        <mat-checkbox class="perecivel" formControlName="perecivel" [checked]="true">Produto perecivel</mat-checkbox>
-      </div>
-      <!-- <div class="mdl-cell mdl-cell--2-col">
-        <mat-form-field appearance="fill">
-          <mat-label>Data de Fabricacao</mat-label>
-          <input matInput [matDatepicker]="picker2" formControlName="fabricacao">
-          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-          <mat-datepicker #picker2></mat-datepicker>
-        </mat-form-field>
-      </div> -->
-
+      <mat-form-field appearance="fill" class="teste">
+        <mat-label>Data de Validade</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="validade">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="mdl-cell mdl-cell--2-col">
+      <mat-checkbox class="perecivel" formControlName="perecivel" [checked]="true">Produto perecivel</mat-checkbox>
+    </div>
     <div class="mdl-cell mdl-cell--2-col">
       <button mat-raised-button class="cancel" color="secondary" type="reset" (click)="closeModal()">Cancelar</button>
-      <button mat-raised-button class="submit" color="primary" type="submit" (click)="onSubmit()" [disabled]="formularioProduto.invalid">Salvar</button>
+      <button mat-raised-button class="submit" color="primary" type="submit" (click)="onSubmit()"
+        [disabled]="formularioItem.invalid">Salvar</button>
     </div>
   </div>
 </form>

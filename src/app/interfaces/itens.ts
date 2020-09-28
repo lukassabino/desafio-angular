@@ -1,8 +1,7 @@
 export interface Itens {
     id: string,
-    nomeProduto: string,
-    // imagemProduto: string,
-    unidadeProduto: string,
+    nomeItem: string,
+    unidade: string,
     quantidade: string,
     preco: string,
     perecivel: string,

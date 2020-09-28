@@ -8,7 +8,7 @@ import { ItemService } from '../services/item.service';
   styleUrls: ['./itens.component.scss']
 })
 export class ItensComponent implements OnInit {
-  formularioProduto: FormGroup;
+  formularioItem: FormGroup;
   itens = []
   mask = "separator.3";
   separatorLimit = "100000";
@@ -26,10 +26,10 @@ export class ItensComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.formularioProduto = this.formBuilder.group({
+    this.formularioItem = this.formBuilder.group({
       id: [null],
-      nomeProduto: [null, Validators.required],
-      unidadeProduto: [null, Validators.required],
+      nomeItem: [null, Validators.required],
+      unidade: [null, Validators.required],
       quantidade: [null],
       preco: [null, Validators.required],
       perecivel: [null],
@@ -39,8 +39,8 @@ export class ItensComponent implements OnInit {
   }
 
   ajustaMask() {
-    this.suffix = this.formularioProduto.get('unidadeProduto').value;
-    if (this.formularioProduto.get('unidadeProduto').value == 'un') {
+    this.suffix = this.formularioItem.get('unidade').value;
+    if (this.formularioItem.get('unidade').value == 'un') {
       this.separatorLimit = "";
       this.mask = "0000";
     }
@@ -51,26 +51,26 @@ export class ItensComponent implements OnInit {
   }
 
   verificaValidade() {
-    if (this.formularioProduto.get('validade').value == null && this.formularioProduto.get('perecivel').value == true) {
-      this.formularioProduto.get('validade').setErrors({invalid: true});
+    if (this.formularioItem.get('validade').value == null && this.formularioItem.get('perecivel').value == true) {
+      this.formularioItem.get('validade').setErrors({invalid: true});
       return true;
     }
-    if (this.formularioProduto.get('validade').value == null) {
+    if (this.formularioItem.get('validade').value == null) {
       return false;
     }
-    if (this.formularioProduto.get('validade').value < new Date) {
-      this.formularioProduto.get('validade').setErrors({invalid: true});
+    if (this.formularioItem.get('validade').value < new Date) {
+      this.formularioItem.get('validade').setErrors({invalid: true});
       return true;
     }
   }
 
   verificaFabricacao() {
-    if (this.formularioProduto.get('fabricacao').value == null) {
+    if (this.formularioItem.get('fabricacao').value == null) {
       return false;
     }
-    if (this.formularioProduto.get('perecivel').value == true 
-        && this.formularioProduto.get('fabricacao').value > this.formularioProduto.get('validade').value) {
-      this.formularioProduto.get('fabricacao').setErrors({invalid: true});
+    if (this.formularioItem.get('perecivel').value == true 
+        && this.formularioItem.get('fabricacao').value > this.formularioItem.get('validade').value) {
+      this.formularioItem.get('fabricacao').setErrors({invalid: true});
       return true;
     }
   }
@@ -78,7 +78,7 @@ export class ItensComponent implements OnInit {
   onSubmit() {
     if (this.verificaValidade() == true || this.verificaFabricacao() == true) {} 
     else {
-      this.itemService.save(this.formularioProduto)
+      this.itemService.save(this.formularioItem)
     }
   }
 }
