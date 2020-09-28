@@ -1,0 +1,63 @@
+h3 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: #adadad;
+    font-family: "Montserrat", "sans-serif" !important;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 540;
+}
+.form-field-cadastro-nome {
+    width: 540px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+.form-field-cadastro-preco {
+    width: 130px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+.form-field-cadastro-unidade {
+    width: 150px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+.form-field-cadastro-quantidade {
+    width: 130px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+.form-field-cadastro-date {
+    width: 230px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+div {
+    .cancel {
+        float: left;
+        margin-top: 50px;
+    }
+    .submit {
+        margin-top: 50px;
+        margin-left: 20px;
+        width: 93px;
+        color: white;
+        background-color: #1C7265;
+    }
+}
+::ng-deep .mat-focused .mat-form-field-label {
+    color: #1C7265 !important;
+}  
+::ng-deep.mat-form-field-underline {
+    background-color: #1C7265 !important;
+} 
+::ng-deep.mat-form-field-ripple {
+    background-color: #1C7265 !important;;
+}
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+    opacity: 0.03 !important;
+    background-color: #1C7265!important;
+}
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #1C7265;
+}

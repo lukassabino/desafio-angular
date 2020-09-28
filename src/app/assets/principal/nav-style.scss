@@ -1,0 +1,35 @@
+div {
+  float: left;
+  margin-right: 20px;
+  height: 1000px;
+  width: 280px;
+  background-color: #249481;
+}
+ul.menu {
+  list-style: none;
+  li {
+    float: left;
+    height: 60px;
+    a {
+      width: 280px;
+      text-decoration: none;
+      height: 60px;
+      padding-left: 10px;
+      padding-right: 10px;
+      color: #ffffff;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-items: center;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #1c7264;
+      }
+    }
+  }
+}
+
+ul.menu li.ativo {
+  background-color: #1c7264;
+}
